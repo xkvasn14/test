@@ -16,6 +16,20 @@
 #include "gtest/gtest.h"
 #include "white_box_code.h"
 
+
+class Note : public Matrix , public testing::Test
+{
+protected:
+     void SetUp(){
+         int vals[] = { 1,2,3,4,5 };
+    }
+  
+};
+
+TEST_F(Note, Dang)
+{
+
+}
 //============================================================================//
 // ** ZDE DOPLNTE TESTY **
 //
@@ -24,5 +38,4 @@
 // 2. Overit spravne chovani operaci nad maticemi v zavislosti na rozmerech 
 //    matic.
 //============================================================================//
-
 /*** Konec souboru white_box_tests.cpp ***/
