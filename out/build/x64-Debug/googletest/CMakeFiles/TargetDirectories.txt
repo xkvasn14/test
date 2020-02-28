@@ -1,0 +1,3 @@
+C:/IVS_PROJEKT_1/assignment/out/build/x64-Debug/googletest/CMakeFiles/googletest.dir
+C:/IVS_PROJEKT_1/assignment/out/build/x64-Debug/googletest/CMakeFiles/edit_cache.dir
+C:/IVS_PROJEKT_1/assignment/out/build/x64-Debug/googletest/CMakeFiles/rebuild_cache.dir
