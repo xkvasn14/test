@@ -33,9 +33,7 @@ class Matrix_Testing : public Matrix , public testing::Test
         Matrix matrix_make_1x1()
         {
             Matrix matrix = Matrix::Matrix(1, 1);
-            matrix.set(std::vector<std::vector<double>>{
-                {9},
-            });
+            matrix.set(0,0,9);
             return matrix;
         }
 
