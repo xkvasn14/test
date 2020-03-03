@@ -32,6 +32,9 @@ class NonEmptyTree : public BinaryTree, public testing::Test
         BinaryTree Tree;
         std::vector<int> vectr = { 1,7,3,4,10 };
         std::vector<std::pair<bool, Node_t*>> outNewNodes;
+        std::vector<Node_t*> outLeafNodes;
+        std::vector<Node_t*> outAllNodes;
+        std::vector<Node_t*> outNonLeafNodes;
 };
     
 
@@ -140,8 +143,63 @@ TEST_F(NonEmptyTree, FindNode)
 
 TEST_F(NonEmptyTree, Axiom1)
 {
+    Tree.InsertNodes(vectr, outNewNodes);
+    Tree.GetLeafNodes(outLeafNodes);
 
+    for (int i = 0; i < outLeafNodes.size(); i++)
+    {
+        EXPECT_TRUE(outLeafNodes[i]->color == Color_t::BLACK);
+    }
 }
+
+TEST_F(NonEmptyTree, Axiom2)
+{
+    Tree.InsertNodes(vectr, outNewNodes);
+    Tree.GetAllNodes(outAllNodes);
+
+    for (int i = 0; i < outAllNodes.size(); i++)
+    {
+        if (outAllNodes[i]->color == Color_t::RED)
+        {
+            EXPECT_TRUE(outAllNodes[i]->pLeft->color == Color_t::BLACK);
+            EXPECT_TRUE(outAllNodes[i]->pRight->color == Color_t::BLACK);
+        }
+    }
+}
+
+TEST_F(NonEmptyTree, Axiom3)
+{
+    Tree.InsertNodes(vectr, outNewNodes);
+    Tree.GetAllNodes(outAllNodes);
+    Tree.GetLeafNodes(outLeafNodes);
+
+    int blacks = 0;
+    int blacks_in_tree[sizeof(outLeafNodes)];
+    int i = 0;
+    Node_t* neznama;
+    
+    for ( i = 0; i < outLeafNodes.size(); i++)
+    {
+        blacks = 0;
+        neznama = outLeafNodes[i];
+        while (neznama->pParent != GetRoot())
+        {
+            neznama = neznama->pParent;
+            if (neznama->color == Color_t::BLACK)
+            {
+                blacks++;
+            }
+            else{}
+        }
+        blacks_in_tree[i] = blacks;
+    }
+    for (i = 0; i < sizeof(blacks_in_tree-1); i++)
+    {
+        EXPECT_TRUE(blacks_in_tree[i] == blacks_in_tree[i + 1]);
+    }
+}
+
+
 //============================================================================//
 // ** ZDE DOPLNTE TESTY **
 //
