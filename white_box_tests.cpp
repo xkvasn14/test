@@ -26,20 +26,20 @@ class Matrix_Testing : public Matrix , public testing::Test
         Matrix matrix_make_1x1_empty()
         {
             Matrix matrix;
-            matrix = Matrix::Matrix();
+            matrix = Matrix();
             return matrix;
         }
 
         Matrix matrix_make_1x1()
         {
-            Matrix matrix = Matrix::Matrix(1, 1);
+            Matrix matrix = Matrix(1, 1);
             matrix.set(0,0,9);
             return matrix;
         }
 
         Matrix matrix_make_5x5()
         {
-            Matrix matrix = Matrix::Matrix(5, 5);
+            Matrix matrix = Matrix(5, 5);
             matrix.set(std::vector<std::vector<double>>{
                 {1,5,1,-7,1},
                 {-2,10,-10,12,-2},
@@ -52,7 +52,7 @@ class Matrix_Testing : public Matrix , public testing::Test
 
         Matrix matrix_make_2x3()
         {
-            Matrix matrix = Matrix::Matrix(2, 3);
+            Matrix matrix = Matrix(2, 3);
             matrix.set(std::vector<std::vector<double>>{
                 { 1,1 },
                 { 2,2 },
@@ -77,17 +77,17 @@ class Matrix_Testing : public Matrix , public testing::Test
 TEST_F(Matrix_Testing, Matrix_Construct)
 {
     //WRONG MATRIX CONSTRUCT
-    EXPECT_ANY_THROW(Matrix::Matrix(-1,5));
-    EXPECT_ANY_THROW(Matrix::Matrix(0, 5));
-    EXPECT_ANY_THROW(Matrix::Matrix(5, 0));
-    EXPECT_ANY_THROW(Matrix::Matrix(5, -1));
+    EXPECT_ANY_THROW(Matrix(-1,5));
+    EXPECT_ANY_THROW(Matrix(0, 5));
+    EXPECT_ANY_THROW(Matrix(5, 0));
+    EXPECT_ANY_THROW(Matrix(5, -1));
 
     //CORRECT MATRIX CONSTRUCT
-    EXPECT_NO_THROW(Matrix::Matrix(1,1));
-    EXPECT_NO_THROW(Matrix::Matrix(5,2));
-    EXPECT_NO_THROW(Matrix::Matrix(2,5));
-    EXPECT_NO_THROW(Matrix::Matrix(20000, 5000));
-    EXPECT_NO_THROW(Matrix::Matrix());
+    EXPECT_NO_THROW(Matrix(1,1));
+    EXPECT_NO_THROW(Matrix(5,2));
+    EXPECT_NO_THROW(Matrix(2,5));
+    EXPECT_NO_THROW(Matrix(20000, 5000));
+    EXPECT_NO_THROW(Matrix());
 }
 
 /////////////////////////////////////////////////////////////
